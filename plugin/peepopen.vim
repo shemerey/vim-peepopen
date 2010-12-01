@@ -23,11 +23,24 @@ let g:peepopen_loaded = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+if !exists('g:peepopen_quit')
+  let g:peepopen_quit = 0
+endif
+
 function s:LaunchPeepOpenViaVim()
   silent exe "!open -a PeepOpen " . shellescape(getcwd())
 endfunction   
 
+function s:QuitPeepOpenViaVim()
+  silent exe '!ps ax | grep PeepOpen | grep -v grep | cut -d" " -f1 | xargs kill -QUIT'
+endfunction
+
 command! PeepOpen :call <SID>LaunchPeepOpenViaVim()
+command! PeepQuit :call <SID>QuitPeepOpenViaVim()
+
+if has('autocmd') && exists('g:peepopen_quit') && g:peepopen_quit
+  au VimLeave * :call <SID>QuitPeepOpenViaVim() 
+endif
 
 noremap <unique> <script> <Plug>PeepOpen <SID>Launch
 noremap <SID>Launch :call <SID>LaunchPeepOpenViaVim()<CR>
