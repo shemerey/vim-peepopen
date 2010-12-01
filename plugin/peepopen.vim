@@ -20,14 +20,11 @@ if &cp || exists("g:peepopen_loaded") && g:peepopen_loaded
   finish
 endif
 let g:peepopen_loaded = 1
-let g:peepopen_cwd = getcwd()
-
 let s:save_cpo = &cpo
 set cpo&vim
 
 function s:LaunchPeepOpenViaVim()
- let cwd = g:peepopen_cwd
- silent exe "!open -a PeepOpen " . shellescape(cwd)
+  silent exe "!open -a PeepOpen " . shellescape(getcwd())
 endfunction   
 
 command! PeepOpen :call <SID>LaunchPeepOpenViaVim()
