@@ -29,6 +29,7 @@ endif
 
 function s:LaunchPeepOpenViaVim()
   silent exe "!open -a PeepOpen " . shellescape(getcwd())
+  redraw!
 endfunction   
 
 function s:QuitPeepOpenViaVim()
