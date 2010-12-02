@@ -33,7 +33,7 @@ function s:LaunchPeepOpenViaVim()
 endfunction   
 
 function s:QuitPeepOpenViaVim()
-  silent exe '!ps ax | grep PeepOpen | grep -v grep | cut -d" " -f1 | xargs kill -QUIT'
+  silent exe '!ps ax | grep PeepOpen | grep -v grep | awk "{ print $1 }" | xargs kill -QUIT'
 endfunction
 
 command! PeepOpen :call <SID>LaunchPeepOpenViaVim()
