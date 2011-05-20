@@ -21,7 +21,7 @@ Usage
 
 `<Leader>p` opens the current project directory with the PeepOpen application.
 
-Use the [vim-rooter]( plugin for automatic assignment of the current working directory for projects stored in Git.
+Use the [vim-rooter](https://github.com/airblade/vim-rooter) plugin for automatic assignment of the current working directory for projects stored in Git.
 
 (Leader is mapped to '\' by default)
 
